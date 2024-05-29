@@ -40,7 +40,6 @@ export class EmployeeListComponent implements OnInit {
         this.employees = data;
         console.log(data)
       } else {
-        // No se encontró ningún empleado con ese ID
         this.showAlert("Intente nuevamente");
       }
 
@@ -52,16 +51,14 @@ export class EmployeeListComponent implements OnInit {
     if (this.employeeId === undefined || this.employeeId === null) {
       this.getEmployees();
     } else {
-      // Búsqueda por ID específico: filtrar por ID
-      const searchId = this.employeeId; // Convertir searchTerm a número
+      const searchId = this.employeeId;
       if (searchId != undefined) {
         const id = searchId;
         this.employeeService.getEmployeeById(id)
           .subscribe(employee => {
             if (employee) {
-              this.employees = [employee]; // Mostrar solo el empleado coincidente
+              this.employees = [employee]; 
             } else {
-              // No se encontró ningún empleado con ese ID
               this.showAlert("Intente nuevamente");
             }
           });
@@ -74,7 +71,7 @@ export class EmployeeListComponent implements OnInit {
     this.alertMessage = message;
     setTimeout(() => {
       this.alertMessage = null;
-    }, 5000); // Ocultar la alerta después de 5 segundos
+    }, 5000);
   }
 
   closeAlert(): void {

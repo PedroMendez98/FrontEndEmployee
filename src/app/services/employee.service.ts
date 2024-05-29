@@ -13,7 +13,7 @@ import { Employee } from '../model/employe.model';
 export class EmployeeService {
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'http://localhost:8080'; // URL de tu backend Spring Boot
+  private baseUrl = 'http://localhost:8080';
 
 
   getAllEmployees(): Observable<Employee[]> {
