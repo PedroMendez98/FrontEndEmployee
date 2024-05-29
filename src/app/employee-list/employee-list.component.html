@@ -1,0 +1,45 @@
+@if(alertMessage != null) {
+<div class="alert">
+    <span class="closebtn" (click)="closeAlert()">&times;</span>
+    {{ alertMessage }}
+</div>
+}
+
+<h2>Buscar Empleados</h2>
+
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col">
+            <input type="number" class="form-control" [(ngModel)]="employeeId" placeholder="Ingrese el Id del Empleado">
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="searchEmployees()">Buscar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Salario</th>
+                        <th>Salario Anual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of employees; track item.id) {
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.employee_name }}</td>
+                        <td>{{ item.employee_age }}</td>
+                        <td>{{ item.employee_salary | currency:'USD':'symbol' }}</td>
+                        <td>{{ item.employee_anual_salary | currency:'USD':'symbol' }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
